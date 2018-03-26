@@ -4,15 +4,20 @@
 Plugin Name:    Bulk Import and Shorten
 Plugin URI:     https://github.com/vaughany/yourls-bulk-import-and-shorten
 Description:    A YOURLS plugin allowing importing of URLs in bulk to be shortened or (optionally) with a custom short URL.
-Version:        0.1
-Release date:   2014-07-17
-Author:         Paul Vaughan
+Version:        0.2
+Release date:   2018-03-26
+Author:         Paul Vaughan & Craig Morin
 Author URI:     http://github.com/vaughany/
 */
 
 /**
  * TODO:
  *      Write the plugin!
+ */
+
+/**
+ * Changelog:
+ *      CM - 2018-03-26: Changed behavior to update existing URLs when keyworks match.
  */
 
 /**
@@ -100,14 +105,16 @@ function vaughany_bias_import_urls( $file ) {
             // Trim out cruft and slashes.
             $keyword = trim( str_replace( '/', '', $csv[1] ) );
 
-            // If the requested keyword is not free, use nothing.
+            // If the requested keyword is not free, update existing.
             if ( !yourls_keyword_is_free( $keyword ) ) {
-                $keyword = '';
+                $result = yourls_edit_link( trim( $csv[0] ), $keyword, $keyword);
             }
-
-            // Add a new link (passing the keyword) and get the result.
-            $result = yourls_add_new_link( trim( $csv[0] ), $keyword );
-
+            else
+            {
+                // Add a new link (passing the keyword) and get the result.
+                $result = yourls_add_new_link( trim( $csv[0] ), $keyword );
+            }
+            
             if ( $result['status'] == 'success' ) {
                 $count++;
             }
