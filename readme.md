@@ -4,9 +4,9 @@ Plugin for [YOURLS](http://yourls.org) 1.7.x.
 
 * Plugin URI:       [github.com/vaughany/yourls-bulk-import-and-shorten](https://github.com/vaughany/yourls-bulk-import-and-shorten)
 * Description:      A YOURLS plugin allowing importing of URLs in bulk to be shortened or (optionally) with a custom short URL.
-* Version:          0.1
-* Release date:     2014-07-17
-* Author:           Paul Vaughan
+* Version:          0.2
+* Release date:     2018-03-26
+* Author:           Paul Vaughan & Craig Morin
 * Author URI:       [github.com/vaughany](http://github.com/vaughany/)
 
 
@@ -33,7 +33,7 @@ This plugin has no user-configurable options.  If you know what you're doing you
 
 ## Use
 
-This plugin expects you to upload a CSV file with at least one column and an optional second column.  The first column should contain the long URL of the 'target', e.g. http://bbc.co.uk. The optional second column can contain a keyword you would like to associate with this URL, if you don't want YOURLS to generate one for you.
+This plugin expects you to upload a CSV file with at least one column and an optional second column.  The first column should contain the long URL of the 'target', e.g. http://bbc.co.uk. The optional second column can contain a keyword you would like to associate with this URL, if you don't want YOURLS to generate one for you. Existing keywords will be updated with new URLs.
 
 Note: In this repository is a file called `test.csv`, which you can use as an example. 
 
@@ -97,6 +97,7 @@ I'm always keen to add new features, improve performance and squash bugs, so if 
 ## History
 
 * 2014-07-17, v0.1:     Still a work in progress.
+* 2018-03-26, v0.2:     Modified to update existing keywords
 
 ## Finally...
 
