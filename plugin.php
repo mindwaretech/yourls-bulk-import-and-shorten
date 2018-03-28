@@ -102,8 +102,8 @@ function vaughany_bias_import_urls( $file ) {
         // Get each line in turn as an array, comma-separated.
         while ( $csv = fgetcsv( $fh, 1000, ',' ) ) {
 
-            // Trim out cruft and slashes.
-            $keyword = trim( str_replace( '/', '', $csv[1] ) );
+            // Trim out cruft.
+            $keyword = trim( $csv[1] );
 
             // If the requested keyword is not free, update existing.
             if ( !yourls_keyword_is_free( $keyword ) ) {
